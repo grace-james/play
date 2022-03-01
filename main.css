@@ -25,10 +25,10 @@ body {
 
 }
 
-/* @keyframes blink {
+@keyframes blink {
     0% {background-color: black;}
     49% {background-color: black;}
     50% {background-color: transparent;}
     99% {background-color: transparent;}
     100% {background-color: black;}
-} */
+}
