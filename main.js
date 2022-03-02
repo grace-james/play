@@ -83,22 +83,39 @@ Hills fled from our sight; but left his golden load.`]
 
 let textArrIndex = 0
 let charIndex = 0
+let imgIndex = 0
+let typing = false
+
+function changeImg() {
+    tree = document.getElementById('tree')
+    tree.src = `./images/tree${textArrIndex}.png`
+}
 
 function type() {
     if (charIndex < textArr[textArrIndex].length) {
+        typing = true
         typedTextSpan.textContent += textArr[textArrIndex].charAt(charIndex);
         charIndex++;
         setTimeout(type, typingDelay)
+    } else {
+        typing = false
     }
 }
 
 function nextPoem() {
+    if (textArrIndex < textArr.length - 1) {
+        textArrIndex++
+    } else if (textArrIndex === 3) {
+        textArrIndex = 0
+    }
     typedTextSpan.textContent = ''
     charIndex = 0
-    textArrIndex++
-    type()
+    changeImg()
+    if (!typing) {
+        type()
+    }
 }
 
-document.getElementById('text-body').addEventListener('click', nextPoem)
+document.getElementById('tree').addEventListener('click', nextPoem)
 
 type()
